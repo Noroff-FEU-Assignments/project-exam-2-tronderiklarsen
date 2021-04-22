@@ -10,3 +10,7 @@ html,
 body {
   font-family: 'Quicksand', sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
