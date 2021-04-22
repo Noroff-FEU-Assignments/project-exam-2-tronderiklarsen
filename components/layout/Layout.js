@@ -7,7 +7,6 @@ export default function Layout({title, children}) {
         <div>
             <Head>
                 <title>{title}</title>
-                <script src="https://kit.fontawesome.com/bbd2f56e96.js" crossorigin="anonymous"></script>
             </Head>
 
             <Header />

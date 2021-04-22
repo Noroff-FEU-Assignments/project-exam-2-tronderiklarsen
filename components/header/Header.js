@@ -11,8 +11,8 @@ export default function Header() {
             </div>
             <nav className={styles.menu}>
                 <ul>
-                    <li><i class="far fa-envelope"></i><Link href="/contact">Contact</Link></li>
-                    <li><i class="far fa-user"></i><Link href="/login">Login</Link></li>
+                    <li><img className={styles.icon} src="images/mail.svg"></img><Link href="/contact">Contact</Link></li>
+                    <li><img className={styles.icon} src="images/user.svg"></img><Link href="/login">Login</Link></li>
                 </ul>
             </nav>
         </header>

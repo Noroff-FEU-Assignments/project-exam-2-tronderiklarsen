@@ -17,7 +17,7 @@
     color: #2E9CCA;
 }
 
-.header ul {
+.header ul,.header li {
     display: flex;
     list-style: none;
     align-items: center;
@@ -26,4 +26,8 @@
 
 .logo {
     width: 125px;
+}
+
+.icon {
+    color: white;
 }
