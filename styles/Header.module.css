@@ -10,6 +10,7 @@
 
 .header a {
     color: white;
+    font-weight: 300;
     margin: 0 16px 0 8px;
 }
 
@@ -26,8 +27,4 @@
 
 .logo {
     width: 125px;
-}
-
-.icon {
-    color: white;
 }
