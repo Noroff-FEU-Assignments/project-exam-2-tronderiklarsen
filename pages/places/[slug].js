@@ -8,6 +8,7 @@ export default function PlacePage({place}) {
             <Image src={place.image.formats.small.url} height={333} width={500}/>
             <h1>{place.name}</h1>
             <p>{place.description}</p>
+            <p>Address: {place.address}</p>
             <h2>{place.price} NOK</h2>
             <a className="btn">Enquire</a>
         </Layout>
