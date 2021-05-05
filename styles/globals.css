@@ -26,6 +26,11 @@ h2 {
   color: #29648A;
 }
 
+p {
+  margin: 8px 0 16px 0;
+  font-weight: 300;
+}
+
 input,textarea {
   width: 100%;
   padding: 16px;
@@ -58,5 +63,7 @@ label {
   background: #2E9CCA;
   color: white;
   font-weight: 500;
-  height: 48px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
 }

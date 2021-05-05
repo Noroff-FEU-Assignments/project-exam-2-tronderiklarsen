@@ -19,5 +19,5 @@ export default function Layout({title, children}) {
 }
 
 Layout.defaultProps = {
-    title: "Holidaze - Find your next accommodation"
+    title: "Holidaze - Find your next place to stay"
 }
