@@ -1,15 +1,15 @@
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { API_URL } from "../constants/api";
+import { API_URL } from "../../constants/api";
 
-export default function AdminPage() {
+export default function EditPage({place}) {
   const [values, setValues] = useState({
-    name: "",
-    address: "",
-    description: "",
-    price: "",
+    name: place.name,
+    address: place.address,
+    description: place.description,
+    price: place.price,
   });
 
   const router = useRouter();
@@ -17,8 +17,8 @@ export default function AdminPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/places`, {
-      method: "POST",
+    const response = await fetch(`${API_URL}/places/${place.id}`, {
+      method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -40,10 +40,8 @@ export default function AdminPage() {
 
   return (
     <Layout title="Admin - Holidaze">
-      <h1>Welcome, Admin!</h1>
-      <h2>Add places, see enquires and messages</h2>
-
-      <h1>Add</h1>
+      <h1>Edit place</h1>
+      
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
@@ -85,13 +83,21 @@ export default function AdminPage() {
           placeholder="Enter description"
         ></textarea>
 
-        <input className="btn" type="submit"></input>
+        <input className="btn" type="submit" value="Update"></input>
       </form>
-
-      <h1>Enquires</h1>
-
-      <h1>Messages</h1>
-      <h2>from contact form</h2>
     </Layout>
   );
+}
+
+export async function getServerSideProps({params: {id}
+}) {
+  const response = await fetch(`${API_URL}/places/${id}`)
+  const place = await response.json()
+
+  return {
+    props: {
+      place
+    }
+  }
+
 }
