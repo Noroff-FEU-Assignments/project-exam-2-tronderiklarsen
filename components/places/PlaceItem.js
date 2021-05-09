@@ -13,7 +13,7 @@ export default function PlaceItem({ place }) {
         <p>{place.description}</p>
       </div>
       <div>
-          <Link href={`/places/${place.slug}`}>
+          <Link href={`/${place.slug}`}>
               <a className="btn">More info</a>
           </Link>
       </div>

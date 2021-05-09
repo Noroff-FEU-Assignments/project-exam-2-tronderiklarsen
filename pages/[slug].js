@@ -1,5 +1,5 @@
-import Layout from "../../components/layout/Layout"
-import {API_URL} from "../../constants/api"
+import Layout from "../components/layout/Layout"
+import {API_URL} from "../constants/api"
 import Image from "next/image"
 
 export default function PlacePage({place}) {
@@ -26,4 +26,3 @@ export async function getServerSideProps({ query: { slug }}) {
         }, 
     }
 }
-
