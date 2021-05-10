@@ -3,14 +3,20 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { API_URL } from "../../constants/api";
+import ImageUpload from "../../components/image/imageUpload";
+import Image from "next/image";
 
-export default function EditPage({place}) {
+export default function EditPage({ place }) {
   const [values, setValues] = useState({
     name: place.name,
     address: place.address,
     description: place.description,
     price: place.price,
   });
+
+  const [imagePreview, setPreview] = useState(
+    place.image ? place.image.formats.thumbnail.url : null
+  );
 
   const router = useRouter();
 
@@ -20,9 +26,9 @@ export default function EditPage({place}) {
     const response = await fetch(`${API_URL}/places/${place.id}`, {
       method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(values)
+      body: JSON.stringify(values),
     });
 
     if (!response.ok) {
@@ -38,10 +44,16 @@ export default function EditPage({place}) {
     setValues({ ...values, [name]: value });
   };
 
+  const imageUploaded = async (e) => {
+    const response = await fetch(`${API_URL}/places/${place.id}`);
+    const data = await response.json();
+    setPreview(data.image.formats.thumbnail.url);
+  };
+
   return (
     <Layout title="Admin - Holidaze">
       <h1>Edit place</h1>
-      
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
@@ -85,19 +97,30 @@ export default function EditPage({place}) {
 
         <input className="btn" type="submit" value="Update"></input>
       </form>
+
+      <h1>Image</h1>
+
+      <h2>Image preview:</h2>
+      {imagePreview ? (
+        <Image src={imagePreview} height={100} width={150} />
+      ) : (
+        <div>
+          <p>No image available</p>
+        </div>
+      )}
+
+      <ImageUpload placeId={place.id} imageUploaded={imageUploaded} />
     </Layout>
   );
 }
 
-export async function getServerSideProps({params: {id}
-}) {
-  const response = await fetch(`${API_URL}/places/${id}`)
-  const place = await response.json()
+export async function getServerSideProps({ params: { id } }) {
+  const response = await fetch(`${API_URL}/places/${id}`);
+  const place = await response.json();
 
   return {
     props: {
-      place
-    }
-  }
-
+      place,
+    },
+  };
 }

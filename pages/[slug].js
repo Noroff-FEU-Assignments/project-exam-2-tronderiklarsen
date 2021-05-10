@@ -40,7 +40,9 @@ export default function PlacePage({ place }) {
             Delete place
           </a>
         </div>
-        <Image src={place.image.formats.small.url} height={333} width={500} />
+        {place.image && (
+          <Image src={place.image.formats.thumbnail.url} height={333} width={500}/>
+        )}
         <h1>{place.name}</h1>
         <p>{place.description}</p>
         <p>Address: {place.address}</p>
