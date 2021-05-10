@@ -74,3 +74,11 @@ label {
   border-radius: 8px;
   margin-bottom: 16px;
 }
+
+.btn-secondary {
+  background: #2E9CCA;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+}
