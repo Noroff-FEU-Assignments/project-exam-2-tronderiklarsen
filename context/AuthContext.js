@@ -1,30 +1,52 @@
-import { createContext, useState, useEffect} from "react"
-import { useRouter } from "next/router"
-import {API_URL} from "../constants/api"
+import { createContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { NEXT_URL } from "../constants/api";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-    const [admin, setAdmin] = useState(null)
-    const [error, setError] = useState(null)
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
-    const login = async ({username:identifier, password}) => {
-        console.log({ identifier, password})
+  const router = useRouter();
+
+  const login = async ({ username: identifier, password }) => {
+    const response = await fetch(`${NEXT_URL}/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        identifier,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (response.ok) {
+      setUser(data.user);
+      router.push("/dashboard");
+    } else {
+      setError(data.message);
     }
+  };
 
-    const logout = async () => {
-        console.log("Logout")
-    }
+  const logout = async () => {
+    console.log("Logout");
+  };
 
-    const checkAdminLoggedIn = async (admin) => {
-        console.log("Check")
-    }
+  const checkAdminLoggedIn = async (user) => {
+    console.log("Check");
+  };
 
-    return (
-        <AuthContext.Provider value={{ admin, error, login, logout}}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
+  return (
+    <AuthContext.Provider value={{ user, error, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-export default AuthContext
+export default AuthContext;

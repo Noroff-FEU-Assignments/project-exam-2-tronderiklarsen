@@ -9,6 +9,8 @@ export default function LoginPage() {
 
   const { login, error } = useContext(AuthContext);
 
+  // useEffect(() => error && console.log(error))
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login({ username, password });
