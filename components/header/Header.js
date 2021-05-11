@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import styles from "../../styles/Header.module.css";
 
 export default function Header() {
-  const { admin, logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <header className={styles.header}>
@@ -18,7 +18,7 @@ export default function Header() {
       </div>
       <nav className={styles.menu}>
         <ul>
-          {admin ? (
+          {user ? (
             <>
               <li>
                 <img src="/images/command.svg"></img>

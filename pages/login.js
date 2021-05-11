@@ -4,7 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
 export default function LoginPage() {
-  const [username, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const { login, error } = useContext(AuthContext);
@@ -25,7 +25,7 @@ export default function LoginPage() {
           type="text"
           id="username"
           value={username}
-          onChange={(e) => setUser(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         ></input>
 
         <label htmlFor="password">Password</label>
