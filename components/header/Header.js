@@ -22,8 +22,8 @@ export default function Header() {
             <>
               <li>
                 <img src="/images/command.svg"></img>
-                <Link href="/dashboard">
-                  <a>Dashboard</a>
+                <Link href="/admin">
+                  <a>Admin</a>
                 </Link>
               </li>
               <li>

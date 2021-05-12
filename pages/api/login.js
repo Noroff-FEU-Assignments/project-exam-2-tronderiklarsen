@@ -26,7 +26,7 @@ export default async (request, response) => {
           secure: process.env.NODE_ENV !== "development",
           maxAge: 60 * 60 * 24 * 7,
           sameSite: "strict",
-          path: "/",
+          path: "/"
         })
       );
       

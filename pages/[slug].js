@@ -28,7 +28,7 @@ export default function PlacePage({ place }) {
     <Layout>
       <div className={styles.place}>
         <div className={styles.controls}>
-          <Link href={`places/${place.id}`}>
+          <Link href={`/places/${place.id}`}>
             <a>
               <img className={styles.icon} src="/images/edit.svg"></img>Edit
               place

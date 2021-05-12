@@ -1,5 +1,4 @@
 import Layout from "../components/layout/Layout";
-import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
 

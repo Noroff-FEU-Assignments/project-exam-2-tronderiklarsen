@@ -1,7 +1,7 @@
+import cookie from "cookie"
 import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { API_URL } from "../../constants/api";
 import ImageUpload from "../../components/image/imageUpload";
 import Image from "next/image";

@@ -1,7 +1,6 @@
 import Layout from "../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { API_URL } from "../constants/api";
 
 export default function AdminPage() {
@@ -20,13 +19,14 @@ export default function AdminPage() {
     const response = await fetch(`${API_URL}/places`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(values)
+      body: JSON.stringify(values),
     });
 
     if (!response.ok) {
-      console.log("error!");
+      if (response.status === 403 || response.status === 401)
+        console.log("No token!");
     } else {
       const place = await response.json();
       router.push(`/${place.slug}`);

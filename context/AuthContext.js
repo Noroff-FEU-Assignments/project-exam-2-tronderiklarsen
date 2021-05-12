@@ -8,6 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
+  useEffect(() => checkAdminLoggedIn(), [])
+
   const router = useRouter();
 
   const login = async ({ username: identifier, password }) => {
@@ -26,17 +28,32 @@ export const AuthProvider = ({ children }) => {
 
     if (response.ok) {
       setUser(data.user);
+      router.push("/admin")
     } else {
       setError(data.message);
     }
   };
 
   const logout = async () => {
-    console.log("Logout");
+    const response = await fetch(`${NEXT_URL}/api/logout`, {
+      method: "POST"
+    })
+
+    if(response.ok) {
+      setUser(null)
+      router.push("/")
+    }
   };
 
   const checkAdminLoggedIn = async (user) => {
-    console.log("Check");
+    const response = await fetch(`${NEXT_URL}/api/user`)
+    const data =  await response.json()
+
+    if(response.ok) {
+      setUser(data.user)
+    } else {
+      setUser(null)
+    }
   };
 
   return (

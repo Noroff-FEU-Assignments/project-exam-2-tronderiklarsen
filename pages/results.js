@@ -12,7 +12,7 @@ export default function ResultsPage({places}) {
     return (
         <Layout title="Results - Holidaze">
             <Link href="/">Return</Link>
-            <h1>Search results for:<i>{router.query.term}</i></h1>
+            <h1>Search results for: <i>{router.query.term}</i></h1>
 
             {places.map((place) => (
             <PlaceItem key={place.id} place={place}/>
