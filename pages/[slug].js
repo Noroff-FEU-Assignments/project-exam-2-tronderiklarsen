@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Layout from "../components/layout/Layout";
@@ -21,7 +23,7 @@ export default function PlacePage({ place }) {
       const data = await response.json();
 
       if (!response.ok) {
-        console.log("error!");
+        toast.error("Something went wrong")
       } else {
         router.push("/results");
       }
@@ -30,6 +32,7 @@ export default function PlacePage({ place }) {
 
   return (
     <Layout>
+      <ToastContainer />
       <div className={styles.place}>
         {user ? (
           <>

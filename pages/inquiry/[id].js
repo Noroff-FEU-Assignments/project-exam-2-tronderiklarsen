@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -25,10 +27,11 @@ export default function EnquiryPage({ place }) {
     });
 
     if (!response.ok) {
-      console.log("error!");
+      toast.error("Something went wrong")
     } else {
       const place = await response.json();
-      router.push("/inquiry/message");
+      router.reload();
+      toast.success("Inquiry sent")
     }
   };
 
@@ -39,6 +42,7 @@ export default function EnquiryPage({ place }) {
 
   return (
     <Layout title="Admin - Holidaze">
+      <ToastContainer />
       <h1>Inquiry</h1>
       <h2>{place.name}</h2>
 

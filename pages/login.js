@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "../components/layout/Layout";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../context/AuthContext";
@@ -8,7 +10,7 @@ export default function LoginPage() {
 
   const { login, error } = useContext(AuthContext);
 
-  // useEffect(() => error && console.log(error))
+  useEffect(() => error && toast.error("Something went wrong"))
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ export default function LoginPage() {
 
   return (
     <Layout title="Admin login - Holidaze">
+      <ToastContainer />
       <h1>Admin login</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>

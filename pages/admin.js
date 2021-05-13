@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -27,8 +29,7 @@ export default function AdminPage({ messages, enquiries }) {
     });
 
     if (!response.ok) {
-      if (response.status === 403 || response.status === 401)
-        console.log("No token!");
+        toast.error("Something went wrong")
     } else {
       const place = await response.json();
       router.push(`/${place.slug}`);
@@ -42,6 +43,7 @@ export default function AdminPage({ messages, enquiries }) {
 
   return (
     <Layout title="Admin - Holidaze">
+      <ToastContainer />
       <h1>Welcome, Admin!</h1>
       <h2>Add places, see enquires and messages</h2>
 

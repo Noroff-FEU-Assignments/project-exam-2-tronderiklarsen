@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -31,7 +33,7 @@ export default function EditPage({ place }) {
     });
 
     if (!response.ok) {
-      console.log("error!");
+      toast.error("Something went wrong")
     } else {
       const place = await response.json();
       router.push(`/${place.slug}`);
@@ -51,6 +53,7 @@ export default function EditPage({ place }) {
 
   return (
     <Layout title="Admin - Holidaze">
+      <ToastContainer />
       <h1>Edit place</h1>
 
       <form onSubmit={handleSubmit}>
