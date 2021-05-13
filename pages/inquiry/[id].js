@@ -1,10 +1,11 @@
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { API_URL } from "../constants/api";
+import { API_URL } from "../../constants/api";
 
-export default function AdminPage() {
+export default function EnquiryPage({ place }) {
   const [values, setValues] = useState({
+    regarding: place.name,
     name: "",
     email: "",
     message: "",
@@ -15,7 +16,7 @@ export default function AdminPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${API_URL}/contacts`, {
+    const response = await fetch(`${API_URL}/enquiries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,10 +25,10 @@ export default function AdminPage() {
     });
 
     if (!response.ok) {
-      console.log("Error!");
+      console.log("error!");
     } else {
-      const contact = await response.json();
-      router.reload();
+      const place = await response.json();
+      router.push("/inquiry/message");
     }
   };
 
@@ -37,10 +38,20 @@ export default function AdminPage() {
   };
 
   return (
-    <Layout title="Contact us - Holidaze">
-      <h1>Contact us</h1>
-      <h2>Got any question?</h2>
+    <Layout title="Admin - Holidaze">
+      <h1>Inquiry</h1>
+      <h2>{place.name}</h2>
+
       <form onSubmit={handleSubmit}>
+        <label htmlFor="regarding">Regarding</label>
+        <input
+          type="text"
+          id="regarding"
+          name="regarding"
+          value={values.regarding}
+          onChange={handleInputChange}
+        ></input>
+
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -53,7 +64,7 @@ export default function AdminPage() {
 
         <label htmlFor="email">Email</label>
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
           value={values.email}
@@ -71,8 +82,19 @@ export default function AdminPage() {
           placeholder="Enter message"
         ></textarea>
 
-        <input className="btn" type="submit"></input>
+        <input className="btn" type="submit" value="Submit"></input>
       </form>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ params: { id } }) {
+  const response = await fetch(`${API_URL}/places/${id}`);
+  const place = await response.json();
+
+  return {
+    props: {
+      place,
+    },
+  };
 }

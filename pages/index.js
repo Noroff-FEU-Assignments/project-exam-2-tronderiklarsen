@@ -1,9 +1,9 @@
-import Layout from "../components/layout/Layout"
-import Search from "../components/search/Search"
-import { API_URL } from "../constants/api"
-import PlaceItem from "../components/places/PlaceItem"
+import Layout from "../components/layout/Layout";
+import Search from "../components/search/Search";
+import { API_URL } from "../constants/api";
+import PlaceItem from "../components/places/PlaceItem";
 
-export default function HomePage( {places} ) {
+export default function HomePage({ places }) {
   return (
     <Layout>
       <h1>Find your next place to stay!</h1>
@@ -15,17 +15,19 @@ export default function HomePage( {places} ) {
       <h2>Featured places</h2>
 
       {places.map((place) => (
-         <PlaceItem key={place.id} place={place}/>
+        <PlaceItem key={place.id} place={place} />
       ))}
     </Layout>
-  )
+  );
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`${API_URL}/places`)
+  const response = await fetch(`${API_URL}/places`);
   const places = await response.json();
 
   return {
-    props: { places },
-  }
+    props: { 
+      places, 
+    },
+  };
 }

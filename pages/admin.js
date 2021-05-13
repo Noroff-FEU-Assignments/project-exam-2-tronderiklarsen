@@ -2,8 +2,10 @@ import Layout from "../components/layout/Layout";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { API_URL } from "../constants/api";
+import MessageItem from "../components/messages/MessageItem";
+import InquiryItem from "../components/inquiry/InquiryItem"
 
-export default function AdminPage() {
+export default function AdminPage({ messages, enquiries }) {
   const [values, setValues] = useState({
     name: "",
     address: "",
@@ -89,9 +91,30 @@ export default function AdminPage() {
       </form>
 
       <h1>Enquires</h1>
+      {enquiries.map((inquiry) => (
+        <InquiryItem key={inquiry.id} inquiry={inquiry} />
+      ))}
 
       <h1>Messages</h1>
       <h2>from contact form</h2>
+      {messages.map((message) => (
+        <MessageItem key={message.id} message={message} />
+      ))}
     </Layout>
   );
+}
+
+export async function getServerSideProps() {
+  const response = await fetch(`${API_URL}/contacts`);
+  const messages = await response.json();
+
+  const res = await fetch(`${API_URL}/enquiries`)
+  const enquiries = await res.json();
+
+  return {
+    props: {
+      messages,
+      enquiries,
+    },
+  };
 }
