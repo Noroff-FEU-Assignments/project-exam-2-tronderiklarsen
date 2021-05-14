@@ -46,6 +46,7 @@ input,textarea {
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
   font-weight: 300;
+  resize: vertical;
 }
 
 input[type=text]:focus {
@@ -58,6 +59,12 @@ input::placeholder {
 
 form {
   margin-top: 16px;
+}
+
+@media (min-width: 1280px) {
+  form {
+    width: 450px;
+  }
 }
 
 label {
@@ -73,7 +80,7 @@ label {
   font-weight: 500;
   padding: 16px;
   border-radius: 8px;
-  margin-bottom: 16px;
+  margin: 16px 0 16px 0;
 }
 
 .btn-secondary {

@@ -4,3 +4,9 @@
     margin-bottom: 16px;
     border-radius: 8px;
 }
+
+@media (min-width: 1280px) {
+    .message {
+        width: 450px;
+    }
+}

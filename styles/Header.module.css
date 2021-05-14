@@ -1,24 +1,41 @@
 .header {
+    background: #25274D;
+}
+
+.menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #25274D;
     color: white;
     height: 64px;
     padding: 0 8px;
 }
 
-.header a {
+@media (min-width: 768px) {
+    .menu {
+        margin: 0 auto;
+        width: 600px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .menu {
+        margin: 0 auto;
+        width: 960px;
+    }
+}
+
+.menu a {
     color: white;
     font-weight: 300;
     margin: 0 16px 0 8px;
 }
 
-.header a:hover {
+.menu a:hover {
     color: #2E9CCA;
 }
 
-.header ul,.header li {
+.menu ul,.menu li {
     display: flex;
     list-style: none;
     align-items: center;

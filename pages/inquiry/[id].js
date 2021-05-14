@@ -31,7 +31,7 @@ export default function EnquiryPage({ place }) {
     } else {
       const place = await response.json();
       router.reload();
-      toast.success("Inquiry sent")
+      toast.success("Inquiry submitted! We will contact you soon.")
     }
   };
 

@@ -8,6 +8,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
+      <div className={styles.menu}>
       <div>
         <Link href="/">
           <img
@@ -16,7 +17,7 @@ export default function Header() {
           ></img>
         </Link>
       </div>
-      <nav className={styles.menu}>
+      <nav>
         <ul>
           {user ? (
             <>
@@ -46,6 +47,7 @@ export default function Header() {
           )}
         </ul>
       </nav>
+      </div>
     </header>
   );
 }

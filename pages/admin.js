@@ -1,11 +1,12 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "../components/layout/Layout";
+import styles from "../styles/AdminPage.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { API_URL } from "../constants/api";
 import MessageItem from "../components/messages/MessageItem";
-import InquiryItem from "../components/inquiry/InquiryItem"
+import InquiryItem from "../components/inquiry/InquiryItem";
 
 export default function AdminPage({ messages, enquiries }) {
   const [values, setValues] = useState({
@@ -29,7 +30,7 @@ export default function AdminPage({ messages, enquiries }) {
     });
 
     if (!response.ok) {
-        toast.error("Something went wrong")
+      toast.error("Something went wrong");
     } else {
       const place = await response.json();
       router.push(`/${place.slug}`);
@@ -44,64 +45,71 @@ export default function AdminPage({ messages, enquiries }) {
   return (
     <Layout title="Admin - Holidaze">
       <ToastContainer />
-      <h1>Welcome, Admin!</h1>
-      <h2>Add places, see enquires and messages</h2>
+      <div className={styles.admin}>
+        <div>
+          <h1>Welcome, Admin!</h1>
+          <h2>Add places, see enquires and messages</h2>
 
-      <h1>Add</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={values.name}
-          onChange={handleInputChange}
-          placeholder="Enter name of place"
-        ></input>
+          <h1>Add</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={values.name}
+              onChange={handleInputChange}
+              placeholder="Enter name of place"
+            ></input>
 
-        <label htmlFor="address">Address</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          value={values.address}
-          onChange={handleInputChange}
-          placeholder="Enter address"
-        ></input>
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={values.address}
+              onChange={handleInputChange}
+              placeholder="Enter address"
+            ></input>
 
-        <label htmlFor="price">Price</label>
-        <input
-          type="number"
-          id="price"
-          name="price"
-          value={values.price}
-          onChange={handleInputChange}
-          placeholder="Enter price"
-        ></input>
+            <label htmlFor="price">Price</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={values.price}
+              onChange={handleInputChange}
+              placeholder="Enter price"
+            ></input>
 
-        <label htmlFor="description">Description</label>
-        <textarea
-          type="text"
-          id="description"
-          name="description"
-          value={values.description}
-          onChange={handleInputChange}
-          placeholder="Enter description"
-        ></textarea>
+            <label htmlFor="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              name="description"
+              value={values.description}
+              onChange={handleInputChange}
+              placeholder="Enter description"
+            ></textarea>
 
-        <input className="btn" type="submit"></input>
-      </form>
+            <input className="btn" type="submit"></input>
+          </form>
+        </div>
 
-      <h1>Enquires</h1>
-      {enquiries.map((inquiry) => (
-        <InquiryItem key={inquiry.id} inquiry={inquiry} />
-      ))}
+        <div className={styles.messages}>
+          <h1>Enquires</h1>
+          <h2>from inqury page</h2>
+          {enquiries.map((inquiry) => (
+            <InquiryItem key={inquiry.id} inquiry={inquiry} />
+          ))}
 
-      <h1>Messages</h1>
-      <h2>from contact form</h2>
-      {messages.map((message) => (
-        <MessageItem key={message.id} message={message} />
-      ))}
+          <h1>Messages</h1>
+          <h2>from contact form</h2>
+          {messages.map((message) => (
+            <MessageItem key={message.id} message={message} />
+          ))}
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -110,7 +118,7 @@ export async function getServerSideProps() {
   const response = await fetch(`${API_URL}/contacts`);
   const messages = await response.json();
 
-  const res = await fetch(`${API_URL}/enquiries`)
+  const res = await fetch(`${API_URL}/enquiries`);
   const enquiries = await res.json();
 
   return {

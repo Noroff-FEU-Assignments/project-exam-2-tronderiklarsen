@@ -1,0 +1,14 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1280px) {
+    .admin {
+        flex-direction: row;
+    }
+
+    .messages {
+        margin-left: 32px;
+    }
+}
