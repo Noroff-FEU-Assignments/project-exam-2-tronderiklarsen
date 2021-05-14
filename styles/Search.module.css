@@ -1,0 +1,36 @@
+.search form {
+    display: flex;
+}
+
+.searchbtn {
+    flex: 1;
+    display: inline-block;
+    background: #2E9CCA;
+    color: white;
+    font-weight: 500;
+    padding: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-left: 4px;
+}
+
+.suggestion {
+    display: block;
+    width: 350px;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: 300;
+}
+
+.suggestion:hover {
+    background: lightgrey;
+}
+
+.preview {
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    margin-left: 8px;
+}
