@@ -1,21 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../../styles/PlaceItem.module.css";
+import styles from "../../styles/ResultItem.module.css";
 
-export default function PlaceItem({ place }) {
+export default function ResultItem({ place }) {
   return (
     <div className={styles.place}>
       <div className={styles.image}>
-        <Image src={place.image.formats.medium.url} width={350} height={250} layout="responsive"/>
+        <Image src={place.image.formats.thumbnail.url} width={250} height={166} />
       </div>
       <div className={styles.info}>
         <h3>{place.name}</h3>
       </div>
       <div>
           <Link href={`/${place.slug}`}>
-              <a className="btn">More info</a>
+              <a className="btn">Info</a>
           </Link>
       </div>
-      </div>
+    </div>
   );
 }

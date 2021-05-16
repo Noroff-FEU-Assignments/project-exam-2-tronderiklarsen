@@ -1,14 +1,15 @@
 .place {
+    display: flex;
     margin-bottom: 32px;
-    width: 500px;
-}
-
-.image {
+    justify-content: space-between;
+    align-items: center;
     margin: 16px 0 8px 0;
+    border-bottom: 1px solid lightgrey;
 }
 
 .image img {
     border-radius: 8px;
+    width: 100px;
 }
 
 .info {
@@ -17,10 +18,4 @@
 
 .info h3 {
     font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.info p {
-    font-weight: 300;
-    margin-bottom: 32px;
 }

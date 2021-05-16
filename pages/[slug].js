@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Layout from "../components/layout/Layout";
+import PlaceMap from "../components/map/PlaceMap";
 import styles from "../styles/Place.module.css";
 import { API_URL } from "../constants/api";
 import Image from "next/image";
@@ -55,15 +56,19 @@ export default function PlacePage({ place }) {
         )}
         {place.image && (
           <Image
-            src={place.image.formats.thumbnail.url}
+            src={place.image.formats.medium.url}
             height={333}
             width={500}
+            layout="responsive"
           />
         )}
         <h1>{place.name}</h1>
         <p>{place.description}</p>
-        <p>Address: {place.address}</p>
-        <h2>{place.price} NOK</h2>
+        <h3>Price:</h3>
+        <p>{place.price} NOK</p>
+        <h3>Address:</h3>
+        <p>{place.address}</p>
+        <PlaceMap place={place}/>
         <Link href={`/inquiry/${place.id}`}>
           <a className="btn">Inquire</a>
         </Link>

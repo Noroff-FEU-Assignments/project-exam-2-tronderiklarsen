@@ -2,7 +2,7 @@ import qs from "qs";
 import Layout from "../components/layout/Layout";
 import { useRouter } from "next/router";
 import { API_URL } from "../constants/api";
-import PlaceItem from "../components/places/PlaceItem";
+import ResultItem from "../components/results/ResultItem";
 import Link from "next/link";
 
 export default function ResultsPage({ places }) {
@@ -16,7 +16,7 @@ export default function ResultsPage({ places }) {
       </h1>
 
       {places.map((place) => (
-        <PlaceItem key={place.id} place={place} />
+        <ResultItem key={place.id} place={place} />
       ))}
     </Layout>
   );

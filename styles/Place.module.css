@@ -1,3 +1,8 @@
+.place {
+    position: relative;
+    padding-top: 40px;
+}
+
 .controls {
     position: absolute;
     top: 0;
@@ -5,18 +10,13 @@
     text-align: center;
 }
 
-.place {
+.icon {
     position: relative;
-    padding-top: 40px;
+    top: 4px;
+    right: 4px;
 }
 
 .delete {
     margin-left: 16px;
     color: red;
-}
-
-.icon {
-    position: relative;
-    top: 4px;
-    right: 4px;
 }

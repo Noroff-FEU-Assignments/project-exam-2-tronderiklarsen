@@ -1,8 +1,7 @@
 .message {
-    border: 1px solid #2E9CCA;
+    border-left: 0.5px solid #29648A;
     padding: 8px;
     margin-bottom: 16px;
-    border-radius: 8px;
 }
 
 @media (min-width: 1280px) {
