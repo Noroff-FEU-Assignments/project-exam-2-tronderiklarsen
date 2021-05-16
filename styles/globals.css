@@ -89,3 +89,11 @@ label {
   border: none;
   border-radius: 8px;
 }
+
+.error-toast {
+  background-color: red !important;
+}
+
+.success-toast {
+  background-color: green !important;
+}

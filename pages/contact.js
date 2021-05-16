@@ -1,7 +1,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "../components/layout/Layout";
-import { useRouter } from "next/router";
 import { API_URL } from "../constants/api";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -20,7 +19,7 @@ const schema = yup.object().shape({
     .min(10, "The message must be at least 10 characters"),
 });
 
-export default function AdminPage() {
+export default function ContactPage() {
 
   const {
     register,
@@ -40,10 +39,14 @@ export default function AdminPage() {
     });
 
     if (!response.ok) {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong"), {
+        className: "error-toast"
+      };
     } else {
       const contact = await response.json();
-      toast.success("Message sent! We will contact you soon");
+      toast.success("Message sent! We will contact you soon", {
+        className: "success-toast",
+      });
     }
   };
 

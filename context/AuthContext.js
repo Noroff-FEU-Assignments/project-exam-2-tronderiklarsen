@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const checkAdminLoggedIn = async (user) => {
+  const checkAdminLoggedIn = async () => {
     const response = await fetch(`${NEXT_URL}/api/user`)
     const data =  await response.json()
 
@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }) => {
       setUser(data.user)
     } else {
       setUser(null)
+      router.push("/login")
     }
   };
 
