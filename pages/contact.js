@@ -1,5 +1,5 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "../components/layout/Layout";
 import { useRouter } from "next/router";
 import { API_URL } from "../constants/api";
@@ -21,7 +21,6 @@ const schema = yup.object().shape({
 });
 
 export default function AdminPage() {
-  const router = useRouter();
 
   const {
     register,
@@ -32,8 +31,6 @@ export default function AdminPage() {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     const response = await fetch(`${API_URL}/contacts`, {
       method: "POST",
       headers: {
@@ -46,8 +43,7 @@ export default function AdminPage() {
       toast.error("Something went wrong");
     } else {
       const contact = await response.json();
-      router.reload();
-      toast.success("Form submitted");
+      toast.success("Message sent! We will contact you soon");
     }
   };
 
