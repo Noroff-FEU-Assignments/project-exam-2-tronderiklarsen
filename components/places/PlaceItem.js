@@ -6,16 +6,24 @@ export default function PlaceItem({ place }) {
   return (
     <div className={styles.place}>
       <div className={styles.image}>
-        <Image src={place.image.formats.medium.url} width={350} height={250} layout="responsive"/>
+        <Image
+          src={
+            place.image
+              ? place.image.formats.medium.url
+              : "/images/place-default.png"
+          }
+          width={375}
+          height={250}
+        />
       </div>
       <div className={styles.info}>
         <h3>{place.name}</h3>
       </div>
       <div>
-          <Link href={`/${place.slug}`}>
-              <a className="btn">More info</a>
-          </Link>
+        <Link href={`/${place.slug}`}>
+          <a className="btn">More info</a>
+        </Link>
       </div>
-      </div>
+    </div>
   );
 }

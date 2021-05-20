@@ -1,9 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap');
 
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  --color-primary: #25274D;
+  --color-secondary: #29648A;
+  --color-tertiary: #2E9CCA;
+  --color-details: #AAABB8;
+  --color-error: #D63031;
+  --color-success: #00B894;
 }
 
 html,
@@ -13,7 +21,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #29648A;
+  color: var(--color-tertiary);
 }
 
 a:hover {
@@ -28,7 +36,7 @@ h1 {
 h2 {
   font-size: 16px;
   margin-bottom: 16px;
-  color: #29648A;
+  color: var(--color-secondary);
 }
 
 p {
@@ -40,7 +48,7 @@ input,textarea {
   width: 100%;
   padding: 16px;
   margin: 4px 0 4px 0;
-  border: 1px solid #AAABB8;
+  border: 1px solid var(--color-details);
   border-radius: 8px;
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
@@ -49,11 +57,11 @@ input,textarea {
 }
 
 input[type=text]:focus {
-  border: 1px solid #2E9CCA;
+  border: 1px solid var(--color-tertiary);
 }
 
 input::placeholder {
-  color: #AAABB8;
+  color: var(--color-details);
 }
 
 form {
@@ -74,7 +82,7 @@ label {
 
 .btn {
   display: inline-block;
-  background: #2E9CCA;
+  background: var(--color-tertiary);
   color: white;
   font-weight: 500;
   padding: 12px;
@@ -84,7 +92,7 @@ label {
 }
 
 .btn-secondary {
-  background: #2E9CCA;
+  background: var(--color-tertiary);
   color: white;
   font-size: 16px;
   padding: 8px;
@@ -93,9 +101,9 @@ label {
 }
 
 .error-toast {
-  background-color: red !important;
+  background-color: var(--color-error) !important;
 }
 
 .success-toast {
-  background-color: green !important;
+  background-color: var(--color-success) !important;
 }

@@ -1,5 +1,5 @@
 .header {
-    background: #25274D;
+    background: var(--color-primary);
 }
 
 .menu {
@@ -32,7 +32,7 @@
 }
 
 .menu a:hover {
-    color: #2E9CCA;
+    color: var(--color-tertiary);
 }
 
 .menu ul,.menu li {

@@ -34,6 +34,7 @@ export default function PlacePage({ place }) {
   return (
     <Layout>
       <ToastContainer />
+      <Link href="/">Return</Link>
       <div className={styles.place}>
         {user ? (
           <>

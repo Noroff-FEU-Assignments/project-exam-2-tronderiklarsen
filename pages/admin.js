@@ -99,12 +99,14 @@ export default function AdminPage({ messages, enquiries }) {
         <div className={styles.messages}>
           <h1>Enquires</h1>
           <h2>from inqury page</h2>
+          {enquiries.length === 0 && <p>No iquiries</p>}
           {enquiries.map((inquiry) => (
             <InquiryItem key={inquiry.id} inquiry={inquiry} />
           ))}
 
           <h1>Messages</h1>
           <h2>from contact form</h2>
+          {messages.length === 0 && <p>No messages</p>}
           {messages.map((message) => (
             <MessageItem key={message.id} message={message} />
           ))}

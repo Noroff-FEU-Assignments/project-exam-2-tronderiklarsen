@@ -81,9 +81,6 @@ export default function Search() {
                 <div>
                   <h3>{suggestion.name}</h3>
                 </div>
-                <div>
-                  <p>{suggestion.price} kr</p>
-                </div>
               </div>
             </div>
           </div>

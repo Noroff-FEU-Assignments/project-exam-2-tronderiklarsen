@@ -1,3 +1,4 @@
+import cookie from "cookie";
 import { createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { NEXT_URL } from "../constants/api";
@@ -8,9 +9,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => checkAdminLoggedIn(), [])
-
   const router = useRouter();
+
+  useEffect(() => checkAdminLoggedIn(), []);
 
   const login = async ({ username: identifier, password }) => {
     const response = await fetch(`${NEXT_URL}/api/login`, {
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
     if (response.ok) {
       setUser(data.user);
-      router.push("/admin")
+      router.push("/admin");
     } else {
       setError(data.message);
     }
@@ -36,12 +37,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     const response = await fetch(`${NEXT_URL}/api/logout`, {
-      method: "POST"
-    })
+      method: "POST",
+    });
 
-    if(response.ok) {
-      setUser(null)
-      router.push("/")
+    if (response.ok) {
+      setUser(null);
+      router.push("/");
     }
   };
 
@@ -49,11 +50,10 @@ export const AuthProvider = ({ children }) => {
     const response = await fetch(`${NEXT_URL}/api/user`)
     const data =  await response.json()
 
-    if(response.ok) {
-      setUser(data.user)
-    } else {
-      setUser(null)
-      router.push("/login")
+    if (response.ok) {
+      setUser(data.user);
+    } else if (!response.ok && router.pathname === "/admin") {
+      setUser(null);
     }
   };
 
