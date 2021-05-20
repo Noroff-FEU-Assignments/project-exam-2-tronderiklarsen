@@ -52,9 +52,9 @@ export default function Search() {
           onChange={(e) => OnChangeHandler(e.target.value)}
           value={text}
           onBlur={() => {
-              setTimeout(() => {
-                  setSuggestions([])
-              }, 100)
+            setTimeout(() => {
+              setSuggestions([]);
+            }, 100);
           }}
           placeholder="Bergen, apartment, hotel"
         ></input>
@@ -73,7 +73,11 @@ export default function Search() {
           >
             <div className={styles.preview}>
               <Image
-                src={suggestion.image.formats.thumbnail.url}
+                src={
+                  suggestion.image
+                    ? suggestion.image.formats.thumbnail.url
+                    : "/images/place-default.jpg"
+                }
                 width={100}
                 height={70}
               />

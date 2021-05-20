@@ -99,14 +99,14 @@ export default function AdminPage({ messages, enquiries }) {
         <div className={styles.messages}>
           <h1>Enquires</h1>
           <h2>from inqury page</h2>
-          {enquiries.length === 0 && <p>No iquiries</p>}
+          {enquiries.length === 0 && <p>No enquiries...</p>}
           {enquiries.map((inquiry) => (
             <InquiryItem key={inquiry.id} inquiry={inquiry} />
           ))}
 
           <h1>Messages</h1>
           <h2>from contact form</h2>
-          {messages.length === 0 && <p>No messages</p>}
+          {messages.length === 0 && <p>No messages...</p>}
           {messages.map((message) => (
             <MessageItem key={message.id} message={message} />
           ))}
@@ -117,10 +117,10 @@ export default function AdminPage({ messages, enquiries }) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`${API_URL}/contacts`);
+  const response = await fetch(`${API_URL}/contacts?_sort=id`);
   const messages = await response.json();
 
-  const res = await fetch(`${API_URL}/enquiries`);
+  const res = await fetch(`${API_URL}/enquiries?_sort=id`);
   const enquiries = await res.json();
 
   return {

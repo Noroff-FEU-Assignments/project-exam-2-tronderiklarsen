@@ -2,10 +2,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/Messages.module.css";
 import { API_URL } from "../../constants/api";
+import { useRouter } from "next/router";
 
 export default function InquiryItem({ inquiry }) {
+  const router = useRouter();
 
-  const deleteInquiry = async (e) => {
+  const deleteInquiry = async () => {
     if (confirm("Are you sure you want to delete this inquiry?")) {
       const response = await fetch(`${API_URL}/enquiries/${inquiry.id}`, {
         method: "DELETE",
@@ -13,10 +15,13 @@ export default function InquiryItem({ inquiry }) {
 
       const data = response.json();
 
-      if (response.ok) {
-        toast.error("Something went wrong");
+      if (!response.ok) {
+        toast.error("Something went wrong"),
+          {
+            className: "error-toast",
+          };
       } else {
-        toast.success("Inquiry deleted")
+        router.reload("/admin");
       }
     }
   };

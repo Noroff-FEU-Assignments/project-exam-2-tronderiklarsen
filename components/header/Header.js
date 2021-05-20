@@ -22,7 +22,7 @@ export default function Header() {
           {user ? (
             <>
               <li>
-                <img src="/images/command.svg"></img>
+                <img src="/images/settings.svg"></img>
                 <Link href="/admin">
                   <a>Admin</a>
                 </Link>

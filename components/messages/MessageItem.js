@@ -7,7 +7,7 @@ import styles from "../../styles/Messages.module.css";
 export default function MessageItem({ message }) {
   const router = useRouter();
 
-  const deleteMessage = async (e) => {
+  const deleteMessage = async () => {
     if (confirm("Are you sure you want to delete this message")) {
       const response = await fetch(`${API_URL}/contacts/${message.id}`, {
         method: "DELETE",
@@ -15,10 +15,13 @@ export default function MessageItem({ message }) {
 
       const data = await response.json();
 
-      if (response.ok) {
-        toast.error("Something went wrong");
+      if (!response.ok) {
+        toast.error("Something went wrong"),
+          {
+            className: "error-toast",
+          };
       } else {
-        toast.success("Message deleted")
+        router.reload("/admin");
       }
     }
   };

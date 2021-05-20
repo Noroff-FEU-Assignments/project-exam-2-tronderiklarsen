@@ -10,7 +10,7 @@ export default function PlaceItem({ place }) {
           src={
             place.image
               ? place.image.formats.medium.url
-              : "/images/place-default.png"
+              : "/images/place-default.svg"
           }
           width={375}
           height={250}

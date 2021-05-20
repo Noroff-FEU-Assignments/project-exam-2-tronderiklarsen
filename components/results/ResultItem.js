@@ -6,15 +6,23 @@ export default function ResultItem({ place }) {
   return (
     <div className={styles.place}>
       <div className={styles.image}>
-        <Image src={place.image.formats.thumbnail.url} width={250} height={166} />
+        <Image
+          src={
+            place.image
+              ? place.image.formats.thumbnail.url
+              : "/images/place-default.svg"
+          }
+          width={250}
+          height={166}
+        />
       </div>
       <div className={styles.info}>
         <h3>{place.name}</h3>
       </div>
       <div>
-          <Link href={`/${place.slug}`}>
-              <a className="btn">Info</a>
-          </Link>
+        <Link href={`/${place.slug}`}>
+          <a className="btn">Info</a>
+        </Link>
       </div>
     </div>
   );

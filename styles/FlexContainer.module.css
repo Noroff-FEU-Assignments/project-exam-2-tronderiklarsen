@@ -2,9 +2,10 @@
 
     .flex {
         display: flex;
+        flex-wrap: wrap;
     }
 
-    .place{
+    .place {
         margin-right: 16px;
     }
 }

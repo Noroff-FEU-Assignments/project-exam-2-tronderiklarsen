@@ -16,8 +16,6 @@ export default function HomePage({ places }) {
       <h1>Explore Bergen</h1>
       <h2>Newest places</h2>
 
-      {places.length === 0 && <p>No places to show</p>}
-
       <div className={styles.flex}>
         {places.map((place) => (
           <div className={styles.place} key={place.id} >
@@ -31,7 +29,7 @@ export default function HomePage({ places }) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`${API_URL}/places?_sort=id:desc&_limit=3`);
+  const response = await fetch(`${API_URL}/places?_sort=id:desc&_limit=4`);
   const places = await response.json();
 
   return {

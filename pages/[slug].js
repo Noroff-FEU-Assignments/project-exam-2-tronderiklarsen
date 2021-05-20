@@ -1,5 +1,5 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import Layout from "../components/layout/Layout";
@@ -24,9 +24,11 @@ export default function PlacePage({ place }) {
       const data = await response.json();
 
       if (!response.ok) {
-        toast.error("Something went wrong")
+        toast.error("Something went wrong", {
+          className: "error-toast",
+        });
       } else {
-        router.push("/results");
+        router.push("/");
       }
     }
   };
@@ -55,21 +57,23 @@ export default function PlacePage({ place }) {
         ) : (
           <></>
         )}
-        {place.image && (
-          <Image
-            src={place.image.formats.medium.url}
-            height={333}
-            width={500}
-            layout="responsive"
-          />
-        )}
+        <Image
+          src={
+            place.image
+              ? place.image.formats.medium.url
+              : "/images/place-default.svg"
+          }
+          height={333}
+          width={500}
+          layout="responsive"
+        />
         <h1>{place.name}</h1>
         <p>{place.description}</p>
         <h3>Price:</h3>
         <p>{place.price} NOK</p>
         <h3>Address:</h3>
         <p>{place.address}</p>
-        <PlaceMap place={place}/>
+        <PlaceMap place={place} />
         <Link href={`/inquiry/${place.id}`}>
           <a className="btn">Inquire</a>
         </Link>
