@@ -7,13 +7,12 @@
     position: absolute;
     top: 0;
     right: 4px;
-    text-align: center;
 }
 
 .icon {
     position: relative;
-    top: 4px;
-    right: 4px;
+    top: 5px;
+    right: 2px;
 }
 
 .delete {

@@ -49,7 +49,12 @@ export default function PlacePage({ place }) {
               </Link>
 
               <a href="#" onClick={deletePlace} className={styles.delete}>
-                <img className={styles.icon} src="/images/x-square.svg"></img>
+                <img
+                  className={styles.icon}
+                  src="/images/x-square.svg"
+                  height={24}
+                  width={24}
+                ></img>
                 Delete place
               </a>
             </div>

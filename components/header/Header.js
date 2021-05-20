@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import styles from "../../styles/Header.module.css";
+import Image from "next/image";
 
 export default function Header() {
   const { user, logout } = useContext(AuthContext);
@@ -11,10 +12,12 @@ export default function Header() {
       <div className={styles.menu}>
       <div>
         <Link href="/">
-          <img
+          <Image
             className={styles.logo}
             src="/images/holidaze-logo-white.svg"
-          ></img>
+            height={55}
+            width={135}
+          ></Image>
         </Link>
       </div>
       <nav>
@@ -22,7 +25,7 @@ export default function Header() {
           {user ? (
             <>
               <li>
-                <img src="/images/settings.svg"></img>
+                <Image src="/images/settings.svg" height={24} width={24}></Image>
                 <Link href="/admin">
                   <a>Admin</a>
                 </Link>
@@ -36,11 +39,11 @@ export default function Header() {
           ) : (
             <>
               <li>
-                <img src="/images/mail.svg"></img>
+                <Image src="/images/mail.svg" height={24} width={24}></Image>
                 <Link href="/contact">Contact</Link>
               </li>
               <li>
-                <img src="/images/user.svg"></img>
+                <Image src="/images/user.svg" height={24} width={24}></Image>
                 <Link href="/login">Login</Link>
               </li>
             </>

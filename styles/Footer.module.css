@@ -4,10 +4,9 @@
     align-items: center;
     margin-top: 64px;
     color: var(--color-primary);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .socials {
-    padding: 4px;
-    width: 24px;
+    padding: 8px;
 }
