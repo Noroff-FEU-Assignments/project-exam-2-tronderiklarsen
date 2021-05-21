@@ -13,8 +13,6 @@ export default function InquiryItem({ inquiry }) {
         method: "DELETE",
       });
 
-      const data = response.json();
-
       if (!response.ok) {
         toast.error("Something went wrong"),
           {

@@ -13,8 +13,6 @@ export default function MessageItem({ message }) {
         method: "DELETE",
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
         toast.error("Something went wrong"),
           {
