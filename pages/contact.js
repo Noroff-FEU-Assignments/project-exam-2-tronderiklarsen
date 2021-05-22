@@ -43,8 +43,8 @@ export default function ContactPage() {
         className: "error-toast"
       };
     } else {
-      const contact = await response.json();
-      toast.success("Message sent! We will contact you soon", {
+      
+      toast.success("Message sent!", {
         className: "success-toast",
       });
     }
