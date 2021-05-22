@@ -12,12 +12,10 @@ export default function Header() {
       <div className={styles.menu}>
       <div>
         <Link href="/">
-          <Image
+          <img
             className={styles.logo}
             src="/images/holidaze-logo-white.svg"
-            height={55}
-            width={135}
-          ></Image>
+          ></img>
         </Link>
       </div>
       <nav>

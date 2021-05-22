@@ -117,10 +117,10 @@ export default function AdminPage({ messages, enquiries }) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`${API_URL}/contacts?_sort=id`);
+  const response = await fetch(`${API_URL}/contacts?_sort=id:desc`);
   const messages = await response.json();
 
-  const res = await fetch(`${API_URL}/enquiries?_sort=id`);
+  const res = await fetch(`${API_URL}/enquiries?_sort=id:desc`);
   const enquiries = await res.json();
 
   return {
