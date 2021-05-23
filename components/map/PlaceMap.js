@@ -31,14 +31,14 @@ export default function PlaceMap({ place }) {
     );
   }, []);
 
-  Geocode.setApiKey("AIzaSyCX7PMN-1VSV1yqBOg4NjJJoqf2bJmZukA");
+  Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY);
 
   if (loading) return false;
 
   return (
     <ReactMapGl
       {...viewport}
-      mapboxApiAccessToken={"pk.eyJ1IjoidHJvbmRlcmlrbGFyc2VuIiwiYSI6ImNrYTRibmdrbzB6OGkzZnF5YzZ3b3Y0dmMifQ.N3lWVQjsfJsYkRJknNl3GQ"}
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
       onViewportChange={(vp) => setViewport(vp)}
     >
         <Marker key={place.id} latitude={lat} longitude={lng}>
